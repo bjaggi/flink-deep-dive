@@ -2,7 +2,7 @@
 deep dive into a flink sql PoC
 
 ## High Level scope of the PoC
-![alt text](https://github.com/bjaggi/flink-deep-dive/image/flink-poc.pngx?raw=true)
+![alt text](https://github.com/bjaggi/flink-deep-dive/blob/main/image/flink-poc.png)
 
 
 ##### Table of Contents  
