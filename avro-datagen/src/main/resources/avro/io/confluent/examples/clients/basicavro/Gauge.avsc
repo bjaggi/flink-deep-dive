@@ -1,0 +1,33 @@
+
+    {
+      "namespace": "com.newrelic",
+      "type": "record",
+      "name": "Gauge",
+      "fields": [
+        {
+          "name": "min",
+          "type": "double"
+        },
+        {
+          "name": "max",
+          "type": "double"
+        },
+        {
+          "name": "sum",
+          "type": "double"
+        },
+        {
+          "name": "count",
+          "type": "double"
+        },
+        {
+          "name": "latest",
+          "type": [
+            "null",
+            "double"
+          ]
+        }
+      ]
+    }
+    
+    

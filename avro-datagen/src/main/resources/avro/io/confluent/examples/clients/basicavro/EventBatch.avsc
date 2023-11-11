@@ -1,0 +1,14 @@
+{
+    "namespace": "com.newrelic",
+    "type": "record",
+    "name": "EventBatch",
+    "fields": [
+      {
+        "name": "dataPoints",
+        "type": {
+          "type": "array",
+          "items": "DataPoint"
+        }
+      }
+    ]
+  }

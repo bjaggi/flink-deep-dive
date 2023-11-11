@@ -1,7 +1,14 @@
 # flink-deep-dive
-deep dive into flink sql 
+deep dive into a flink sql PoC
+
+## High Level scope of the PoC
+![alt text](https://github.com/bjaggi/flink-deep-dive/image/flink-poc.pngx?raw=true)
 
 
+##### Table of Contents  
+[Create AVRO schema with IDL](##IDL to create schema)  
+  
+##IDL to create schema
 
 https://avro.apache.org/docs/1.11.1/idl-language/
 
@@ -45,6 +52,17 @@ This is working better:
 avro-tools idl2schemata IDL_FILE OUTPUT_DIR
 
 
+## Generate Avro Schema and AVRO data for the schema created
 
 mvn -Dcheckstyle.skip clean compile package
+
+
+
+## Create a FLink SQL table
+
+## Ingest Data to Flink SQL
+
+## Query/ Monitor/ Troubleshoot
+
+
 

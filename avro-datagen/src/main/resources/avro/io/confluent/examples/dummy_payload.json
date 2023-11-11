@@ -1,0 +1,221 @@
+{
+    "dataPoints": [
+      {
+        "account": 1,
+        "timestampMs": 1699021360410,
+        "durationMs": 15000,
+        "metricName": "my.counter",
+        "counter": {
+          "cumulativeValue": 0,
+          "deltaValue": 0
+        },
+        "gauge": null,
+        "attributes": {
+          "newrKey": "newrValue"
+        }
+      },
+      {
+        "account": 1,
+        "timestampMs": 1699021360411,
+        "durationMs": 15000,
+        "metricName": "my.guage",
+        "counter": null,
+        "gauge": {
+          "min": 0,
+          "max": 0,
+          "sum": 0,
+          "count": 0,
+          "latest": 0
+        },
+        "attributes": {
+          "newrKey": "newrValue"
+        }
+      },
+      {
+        "account": 1,
+        "timestampMs": 1699021375411,
+        "durationMs": 15000,
+        "metricName": "my.counter",
+        "counter": {
+          "cumulativeValue": 1,
+          "deltaValue": 1
+        },
+        "gauge": null,
+        "attributes": {
+          "newrKey": "newrValue"
+        }
+      },
+      {
+        "account": 1,
+        "timestampMs": 1699021375411,
+        "durationMs": 15000,
+        "metricName": "my.guage",
+        "counter": null,
+        "gauge": {
+          "min": 1,
+          "max": 1,
+          "sum": 1,
+          "count": 1,
+          "latest": 1
+        },
+        "attributes": {
+          "newrKey": "newrValue"
+        }
+      },
+      {
+        "account": 1,
+        "timestampMs": 1699021390411,
+        "durationMs": 15000,
+        "metricName": "my.counter",
+        "counter": {
+          "cumulativeValue": 2,
+          "deltaValue": 1
+        },
+        "gauge": null,
+        "attributes": {
+          "newrKey": "newrValue"
+        }
+      },
+      {
+        "account": 1,
+        "timestampMs": 1699021390411,
+        "durationMs": 15000,
+        "metricName": "my.guage",
+        "counter": null,
+        "gauge": {
+          "min": 2,
+          "max": 2,
+          "sum": 2,
+          "count": 2,
+          "latest": 2
+        },
+        "attributes": {
+          "newrKey": "newrValue"
+        }
+      },
+      {
+        "account": 1,
+        "timestampMs": 1699021405411,
+        "durationMs": 15000,
+        "metricName": "my.counter",
+        "counter": {
+          "cumulativeValue": 3,
+          "deltaValue": 1
+        },
+        "gauge": null,
+        "attributes": {
+          "newrKey": "newrValue"
+        }
+      },
+      {
+        "account": 1,
+        "timestampMs": 1699021405411,
+        "durationMs": 15000,
+        "metricName": "my.guage",
+        "counter": null,
+        "gauge": {
+          "min": 3,
+          "max": 3,
+          "sum": 3,
+          "count": 3,
+          "latest": 3
+        },
+        "attributes": {
+          "newrKey": "newrValue"
+        }
+      },
+      {
+        "account": 1,
+        "timestampMs": 1699021420411,
+        "durationMs": 15000,
+        "metricName": "my.counter",
+        "counter": {
+          "cumulativeValue": 4,
+          "deltaValue": 1
+        },
+        "gauge": null,
+        "attributes": {
+          "newrKey": "newrValue"
+        }
+      },
+      {
+        "account": 1,
+        "timestampMs": 1699021420411,
+        "durationMs": 15000,
+        "metricName": "my.guage",
+        "counter": null,
+        "gauge": {
+          "min": 4,
+          "max": 4,
+          "sum": 4,
+          "count": 4,
+          "latest": 4
+        },
+        "attributes": {
+          "newrKey": "newrValue"
+        }
+      },
+      {
+        "account": 1,
+        "timestampMs": 1699021435411,
+        "durationMs": 15000,
+        "metricName": "my.counter",
+        "counter": {
+          "cumulativeValue": 5,
+          "deltaValue": 1
+        },
+        "gauge": null,
+        "attributes": {
+          "newrKey": "newrValue"
+        }
+      },
+      {
+        "account": 1,
+        "timestampMs": 1699021435411,
+        "durationMs": 15000,
+        "metricName": "my.guage",
+        "counter": null,
+        "gauge": {
+          "min": 5,
+          "max": 5,
+          "sum": 5,
+          "count": 5,
+          "latest": 5
+        },
+        "attributes": {
+          "newrKey": "newrValue"
+        }
+      },
+      {
+        "account": 1,
+        "timestampMs": 1699021450411,
+        "durationMs": 15000,
+        "metricName": "my.counter",
+        "counter": {
+          "cumulativeValue": 6,
+          "deltaValue": 1
+        },
+        "gauge": null,
+        "attributes": {
+          "newrKey": "newrValue"
+        }
+      },
+      {
+        "account": 1,
+        "timestampMs": 1699021450411,
+        "durationMs": 15000,
+        "metricName": "my.guage",
+        "counter": null,
+        "gauge": {
+          "min": 6,
+          "max": 6,
+          "sum": 6,
+          "count": 6,
+          "latest": 6
+        },
+        "attributes": {
+          "newrKey": "newrValue"
+        }
+      }
+    ]
+  }

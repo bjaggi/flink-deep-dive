@@ -1,0 +1,49 @@
+{
+    "namespace": "com.newrelic",
+    "type": "record",
+    "name": "DataPoint",
+    "fields": [
+      {
+        "name": "account",
+        "type": "int"
+      },
+      {
+        "name": "timestampMs",
+        "type": {
+          "type": "long",
+          "logicalType": "timestamp-millis"
+        }
+      },
+      {
+        "name": "durationMs",
+        "type": "long",
+        "default": 15000
+      },
+      {
+        "name": "metricName",
+        "type": "string"
+      },
+      {
+        "name": "metricValue",
+        "type": [
+          "CumulativeCounter",
+          "Gauge"
+        ]
+      },
+      {
+        "name": "attributes",
+        "type": {
+          "type": "map",
+          "values": [
+            "int",
+            "long",
+            "string",
+            "boolean",
+            "float",
+            "double",
+            "bytes"
+          ]
+        }
+      }
+    ]
+  }

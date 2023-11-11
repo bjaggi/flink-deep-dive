@@ -1,0 +1,158 @@
+[
+  {
+    "type": "record",
+    "name": "CumulativeCounter",
+    "namespace": "com.newrelic.metrics",
+    "fields": [
+      {
+        "name": "cumulativeValue",
+        "type": {
+          "type": "long",
+          "arg.properties": {
+            "iteration": {
+              "start": 0,
+              "restart": 10,
+              "step": 1
+            }
+          }
+        }
+      },
+      {
+        "name": "deltaValue",
+        "type": {
+          "type": "long",
+          "arg.properties": {
+            "options": [
+              1
+            ]
+          }
+        }
+      }
+    ]
+  },
+  {
+    "type": "record",
+    "name": "Gauge",
+    "namespace": "com.newrelic.metrics",
+    "fields": [
+      {
+        "name": "min",
+        "type": "double"
+      },
+      {
+        "name": "max",
+        "type": "double"
+      },
+      {
+        "name": "sum",
+        "type": "double"
+      },
+      {
+        "name": "count",
+        "type": "double"
+      },
+      {
+        "name": "latest",
+        "type": [
+          "null",
+          "double"
+        ]
+      }
+    ]
+  },
+  {
+    "type": "record",
+    "name": "DataPoint",
+    "namespace": "com.newrelic.metrics",
+    "fields": [
+      {
+        "name": "account",
+        "type": {
+          "type": "int",
+          "arg.properties": {
+            "options": [
+              1
+            ]
+          }
+        }
+      },
+      {
+        "name": "timestampMs",
+        "type": {
+          "type": "long",
+          "logicalType": "timestamp-millis"
+        }
+      },
+      {
+        "name": "durationMs",
+        "type": {
+          "type": "long",
+          "arg.properties": {
+            "options": [
+              15000
+            ]
+          }
+        },
+        "default": 15000
+      },
+      {
+        "name": "metricName",
+        "type": {
+          "type": "string",
+          "arg.properties": {
+            "regex": "metric-\\d{1}"
+          }
+        }
+      },
+      {
+        "name": "counter",
+        "type": [
+          "CumulativeCounter",
+          "null"
+        ]
+      },
+      {
+        "name": "gauge",
+        "type": [
+          "Gauge",
+          "null"
+        ]
+      },
+      {
+        "name": "attributes",
+        "type": {
+          "type": "map",
+          "values": {
+            "type": "string",
+            "arg.properties": {
+              "regex": "value-\\d{1}"
+            }
+          },
+          "arg.properties": {
+            "length": 3,
+            "keys": {
+              "regex": "key-\\d{1}"
+            }
+          }
+        }
+      }
+    ]
+  },
+  {
+    "type": "record",
+    "name": "EventBatch",
+    "namespace": "com.newrelic.metrics",
+    "fields": [
+      {
+        "name": "dataPoints",
+        "type": {
+          "type": "array",
+          "items": "DataPoint",
+          "arg.properties": {
+            "length": 1000
+          }
+        }
+      }
+    ]
+  }
+]
