@@ -1,0 +1,28 @@
+@namespace("com.newrelic")
+protocol DimensionalMetrics {
+	record CumulativeCounter {
+		long cumulativeValue;
+		long? deltaValue;
+	}
+
+	record Gauge {
+		double min;
+		double max;
+		double sum;
+		double count;
+		double? latest;
+	}
+
+	record DataPoint {
+		int account;
+		timestamp_ms timestampMs;
+		long durationMs = 15000;
+		string metricName;
+		union {CumulativeCounter, Gauge} metricValue;
+		map<union {int, long, string, boolean, float, double, bytes}> attributes;
+	}
+
+	record EventBatch {
+		array<DataPoint> dataPoints;
+	}
+}

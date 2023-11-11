@@ -1,0 +1,78 @@
+{
+    "types" : [ {
+      "namespace" : "com.newrelic.avro",
+      "type" : "record",
+      "name" : "CumulativeCounter",
+      "fields" : [ {
+        "name" : "cumulativeValue",
+        "type" : "long"
+      }, {
+        "name" : "deltaValue",
+        "type" : [ "null", "long" ]
+      } ]
+    }, {
+      "namespace" : "com.newrelic.avro",
+      "type" : "record",
+      "name" : "Gauge",
+      "fields" : [ {
+        "name" : "min",
+        "type" : "double"
+      }, {
+        "name" : "max",
+        "type" : "double"
+      }, {
+        "name" : "sum",
+        "type" : "double"
+      }, {
+        "name" : "count",
+        "type" : "double"
+      }, {
+        "name" : "latest",
+        "type" : [ "null", "double" ]
+      } ]
+    }, {
+      "namespace" : "com.newrelic.avro",
+      "type" : "record",
+      "name" : "DataPoint",
+      "fields" : [ {
+        "name" : "account",
+        "type" : "int"
+      }, {
+        "name" : "timestampMs",
+        "type" : {
+          "type" : "long",
+          "logicalType" : "timestamp-millis"
+        }
+      }, {
+        "name" : "durationMs",
+        "type" : "long",
+        "default" : 15000
+      }, {
+        "name" : "metricName",
+        "type" : "string"
+      }, {
+        "name" : "counter",
+        "type" : [ "null", "CumulativeCounter" ]
+      }, {
+        "name" : "gauge",
+        "type" : [ "null", "Gauge" ]
+      }, {
+        "name" : "attributes",
+        "type" : {
+          "type" : "map",
+          "values" : "string"
+        }
+      } ]
+    }, {
+      "namespace" : "com.newrelic.avro",
+      "type" : "record",
+      "name" : "EventBatch",
+      "fields" : [ {
+        "name" : "dataPoints",
+        "type" : {
+          "type" : "array",
+          "items" : "DataPoint"
+        }
+      } ]
+    } ]
+}

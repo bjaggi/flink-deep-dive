@@ -1,0 +1,5 @@
+avro-datagen/.DS_Store
+avro-datagen/target
+avro-datagen/target/*
+avro-datagen/target/*.*
+avro-datagen/target/.*
