@@ -7,7 +7,8 @@ deep dive into a flink sql PoC
 
 ##### Table of Contents  
 [Create AVRO schema with IDL](##IDL to create schema)  
-  
+
+
 ##IDL to create schema
 
 https://avro.apache.org/docs/1.11.1/idl-language/
