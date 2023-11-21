@@ -79,24 +79,6 @@ INSERT INTO `metric-1m-aggregations` SELECT (account, metricName, attributes) AS
 ~~~sql
 INSERT INTO `metric-1m-aggregations`
 SELECT
-  window_start AS `window_ts`,
-  TIMESTAMPDIFF(SECOND, window_start, window_end) AS `window_duration`,
-  account,
- CASE
-    WHEN counter_cumulative IS NOT NULL THEN 'counter'
-    WHEN gauge_sum IS NOT NULL THEN 'gauge_sum'
-    ELSE 'other'
-  END AS `metric_type`,
-  metricName AS `metric_name`,
-  attributes,
-  counter_delta,
-  counter_cumulative,
-  gauge_min,
-  gauge_max,
-  gauge_latest,
-  gauge_count,
-  gauge_sum
-FROM (SELECT
   window_start,
   window_end,
   account,
@@ -109,8 +91,7 @@ FROM (SELECT
   sum(gauge.`sum`) AS `gauge_sum`,
   LAST_VALUE(gauge.`latest`) AS `gauge_latest`,
   sum(gauge.`count`) AS `gauge_count`
-  FROM TABLE(TUMBLE(TABLE `metric-data-points` , DESCRIPTOR(timestampMs), INTERVAL '1' MINUTES))
-  GROUP BY window_start, window_end, metricName, account, attributes);
+  FROM TABLE(TUMBLE(TABLE `metric-data-points` , DESCRIPTOR(timestampMs), INTERVAL '1' MINUTES);
 ~~~
 
 ### Custom WaterMark using Flink
