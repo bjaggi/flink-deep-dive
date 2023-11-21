@@ -113,7 +113,7 @@ FROM (SELECT
   GROUP BY window_start, window_end, metricName, account, attributes);
 ~~~
 
-## Custom WaterMark using Flink
+### Custom WaterMark using Flink
 
 ~~~sql
 FROM TABLE(TUMBLE(TABLE `newr_metrics_watermarked_tbl` , DESCRIPTOR(timestampMs), INTERVAL '1' MINUTES))
@@ -157,7 +157,7 @@ FROM (SELECT
 ~~~
 
 
-## Query/ Monitor/ Troubleshoot
+### Query/ Monitor/ Troubleshoot
 
 
 
