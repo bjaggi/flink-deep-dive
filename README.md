@@ -9,7 +9,7 @@ There is a lot of telemetry data to be processed in realtime. At high level they
 ![alt text](https://github.com/bjaggi/flink-deep-dive/blob/main/image/flink-poc.png)
 
 
-### High Level scope of the PoC 
+## High Level scope of the PoC 
 
 . Create AVRO schema using AVRO IDL
 . Generate mock AVRO data on Kafka topics.
@@ -20,7 +20,7 @@ There is a lot of telemetry data to be processed in realtime. At high level they
 
 *Note: Customer's AVRO schema had `union` semantics, currently there is no support for `union` in Flink SQL, and we decided to create our own schema replacing union with nullable attributes. This step may not be required if the schema was in a state acceptable by Flink Sql.*
 
-## Step1> Create a schema using AVRO IDL
+### Step1> Create a schema using AVRO IDL
 
 [Avro IDL](https://avro.apache.org/docs/1.11.1/idl-language), is a higher-level language for creating Avro schema's.
 
@@ -35,7 +35,7 @@ Most of the tooling (especially default java codegen) seems to expect a schema f
 
 
 
-## Produce AVRO data for the schema created
+### Step2> Produce AVRO data for the schema created
 
 A sample framework is present in the folder : `avro-datagen` , where you compile the `.avsc` file and produce sample data 
 
@@ -43,7 +43,7 @@ Use the following command to compile the code:
 `mvn -Dcheckstyle.skip clean compile package`
 
 
-## Create a FLink SQL table
+### Step3> Create a FLink SQL table
 
 The folder `flink-sql` has a file called [flink_sql.sql](https://github.com/bjaggi/flink-deep-dive/blob/main/flink-sql/flink_sql.sql).
 
@@ -60,7 +60,7 @@ CREATE TABLE newr_metrics_tbl (
 ~~~
 
 
-## Ingest Data to Flink SQL
+### Step4> Ingest Data to Flink SQL
 
 `newr_metrics_tbl` is the Flink table and `newr_metrics` is the kafka topic, on executing of this command a job is started on Flink. Which can be monitored on the Flink Dashboard. 
 
@@ -68,7 +68,7 @@ CREATE TABLE newr_metrics_tbl (
 INSERT INTO newr_metrics_tbl SELECT account,timestampMs,durationMs,metricName,counter, gauge, attributes  from newr_metrics;
 ~~~
 
-## SQL Analytics using Flink
+### Step5> SQL Analytics using Flink
 ~~~sql
 INSERT INTO `metric-1m-aggregations` SELECT (account, metricName, attributes) AS `identity`,  sum(counter.deltaValue) AS `counter_deltaValue`, sum(gauge.`sum`) AS`gauge_sum`  from TABLE(TUMBLE(TABLE `metric-data-points` , DESCRIPTOR($rowtime), INTERVAL '1' MINUTES)) group by metricName, account, attributes;
 ~~~
