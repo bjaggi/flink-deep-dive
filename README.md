@@ -91,7 +91,7 @@ SELECT
   sum(gauge.`sum`) AS `gauge_sum`,
   LAST_VALUE(gauge.`latest`) AS `gauge_latest`,
   sum(gauge.`count`) AS `gauge_count`
-  FROM TABLE(TUMBLE(TABLE `metric-data-points` , DESCRIPTOR(timestampMs), INTERVAL '1' MINUTES);
+  FROM TABLE(TUMBLE(TABLE `metric-data-points` , DESCRIPTOR($rowtime), INTERVAL '1' MINUTES);
 ~~~
 
 ### Custom WaterMark using Flink
