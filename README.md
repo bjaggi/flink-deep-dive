@@ -70,10 +70,10 @@ INSERT INTO newr_metrics_tbl SELECT account,timestampMs,durationMs,metricName,co
 
 ### Step5> SQL Analytics using Flink
 ~~~sql
-INSERT INTO `metric-1m-aggregations` SELECT (account, metricName, attributes) AS `identity`,  sum(counter.deltaValue) AS `counter_deltaValue`, sum(gauge.`sum`) AS`gauge_sum`  from TABLE(TUMBLE(TABLE `metric-data-points` , DESCRIPTOR($rowtime), INTERVAL '1' MINUTES)) group by metricName, account, attributes;
+INSERT INTO `metric-1m-aggregations` SELECT (account, metricName, attributes) AS `identity`,  sum(counter.deltaValue) AS `counter_deltaValue`, sum(gauge.`sum`) AS`gauge_sum`  from TABLE(TUMBLE(TABLE `newr_metrics_tbl` , DESCRIPTOR($rowtime), INTERVAL '1' MINUTES)) group by metricName, account, attributes;
 ~~~
 
-
+*Note: `DESCRIPTOR($rowtime)` is using `$rowtime` hence the ingestion time, if you want a custom watermark strategy change that time to event time, show later in the section*
 
 
 ~~~sql
