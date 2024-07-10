@@ -6,10 +6,14 @@ A very popular SaaS company gathers telemetry data from websites and mobile apps
 There is a lot of telemetry data to be processed in realtime. At high level they analyze metrics of key data points in a 1 minute, 1 hour and 1 Day window.
 
 
-![alt text](https://github.com/bjaggi/flink-deep-dive/blob/main/image/flink-poc.png)
+![use case 1](https://github.com/bjaggi/flink-deep-dive/blob/main/image/flink-poc.png)
+![use case 2](https://github.com/bjaggi/flink-deep-dive/blob/main/image/usecase_2.png)
 
+# Table of Contents
+1. [Scope of the Use Case 1](#poc1)
+1. [Scope of the Use Case 2](#poc2)
 
-## High Level scope of the PoC 
+# Scope of the Use Case 1  <a name="poc1"></a>
 
 . Create AVRO schema using AVRO IDL
 . Generate mock AVRO data on Kafka topics.
@@ -24,20 +28,15 @@ There is a lot of telemetry data to be processed in realtime. At high level they
 
 [Avro IDL](https://avro.apache.org/docs/1.11.1/idl-language), is a higher-level language for creating Avro schema's.
 
-
-
 For our Avro schema, we started with creating an IDL [file](https://github.com/bjaggi/flink-deep-dive/blob/main/avro-tools/metrics_avro.idl), present in the `avro-tools` folder . Once the IDL is in an acceptable state we converted that to `.avsc` format using the cli    `avro-tools idl IDL_FILE SCHEMA_OUTPUT_FILE`. 
-
 
 *Note: This generates a schema in “protocol” format (messages, protocol).
 Most of the tooling (especially default java codegen) seems to expect a schema format without those fields. Some minimal editing of the avsc may be required if you are using a PROTOCOL, use CLI : `avro-tools idl2schemata IDL_FILE OUTPUT_DIR`*
 
 
-
-
 ### Step2> Produce AVRO data for the schema created
 
-A sample framework is present in the folder : `avro-datagen` , where you compile the `.avsc` file and produce sample data 
+A sample framework is present in the folder : `avro-datagen` , where you compile the `.avsc` file and produce sample data
 
 Use the following command to compile the code: 
 `mvn -Dcheckstyle.skip clean compile package`
@@ -59,11 +58,9 @@ CREATE TABLE newr_metrics_tbl (
 );
 ~~~
 
-
 ### Step4> Ingest Data to Flink SQL
 
-`newr_metrics_tbl` is the Flink table and `newr_metrics` is the kafka topic, on executing of this command a job is started on Flink. Which can be monitored on the Flink Dashboard. 
-
+`newr_metrics_tbl` is the Flink table and `newr_metrics` is the kafka topic, on executing of this command a job is started on Flink. Which can be monitored on the Flink Dashboard.
 ~~~sql
 INSERT INTO newr_metrics_tbl SELECT account,timestampMs,durationMs,metricName,counter, gauge, attributes  from newr_metrics;
 ~~~
@@ -136,6 +133,20 @@ FROM (SELECT
   FROM TABLE(TUMBLE(TABLE `metric-data-points` , DESCRIPTOR(timestampMs), INTERVAL '1' MINUTES))
   GROUP BY window_start, window_end, metricName, account, attributes);
 ~~~
+
+
+
+# Scope of the Use Case 2  <a name="poc2"></a>
+
+. Migrating exising OSS FLink SQL to CC Flink SQL   
+.   
+.   
+
+
+
+
+
+
 
 
 ### Query/ Monitor/ Troubleshoot

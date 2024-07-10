@@ -1,0 +1,58 @@
+{
+  "fields": [
+    {
+      "name": "company_id",
+      "type": "long"
+    },
+    {
+      "name": "login_information_id",
+      "type": "long"
+    },
+    {
+      "default": null,
+      "name": "id",
+      "type": [
+        "null",
+        "string"
+      ]
+    },
+    {
+      "default": null,
+      "name": "name",
+      "type": [
+        "null",
+        "string"
+      ]
+    },
+    {
+      "default": null,
+      "name": "email_address",
+      "type": [
+        "null",
+        "string"
+      ]
+    },
+    {
+      "default": null,
+      "name": "event_timestamp",
+      "type": [
+        "null",
+        {
+          "logicalType": "local-timestamp-millis",
+          "type": "long"
+        }
+      ]
+    },
+    {
+      "default": null,
+      "name": "is_employee",
+      "type": [
+        "null",
+        "boolean"
+      ]
+    }
+  ],
+  "name": "actors_compact",
+  "namespace": "org.apache.flink.avro.generated",
+  "type": "record"
+}

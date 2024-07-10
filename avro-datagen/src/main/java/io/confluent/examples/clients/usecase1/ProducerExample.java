@@ -1,6 +1,5 @@
-package io.confluent.examples.clients.basicavro;
+package io.confluent.examples.clients.usecase1;
 
-import io.confluent.kafka.serializers.AbstractKafkaSchemaSerDeConfig;
 import org.apache.kafka.clients.producer.KafkaProducer;
 import org.apache.kafka.clients.producer.ProducerConfig;
 import org.apache.kafka.clients.producer.ProducerRecord;
@@ -15,7 +14,6 @@ import java.nio.file.Paths;
 import java.time.Instant;
 import java.io.FileInputStream;
 import java.io.InputStream;
-import com.newrelic.*;
 import java.util.*;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.Future;
@@ -31,7 +29,7 @@ public class ProducerExample {
     public static void main(final String[] args) throws IOException, ExecutionException {
 
 
-       
+
           // Load properties from a local configuration file
           // Create the configuration file (e.g. at '$HOME/.confluent/java.config') with configuration parameters
           // to connect to your Kafka cluster, which can be on your local host, Confluent Cloud, or any other cluster.
@@ -44,7 +42,7 @@ public class ProducerExample {
               props.load(inputStream);
             }
           }
-        
+
 
         props.put(ProducerConfig.ACKS_CONFIG, "all");
         props.put(ProducerConfig.RETRIES_CONFIG, 0);
@@ -56,18 +54,18 @@ public class ProducerExample {
             for (long i = 0; i < 10; i++) {
 
               Map<String,String> map = new HashMap<String,String>();
-              map.put("newrKey", "newrValue"+i);    
-              //map.put("newrKey2", "newrValue2");    
+              map.put("newrKey", "newrValue"+i);
+              //map.put("newrKey2", "newrValue2");
               CumulativeCounter cCtr = CumulativeCounter.newBuilder()
               .setCumulativeValue(10L)
               .setDeltaValue(1L)
-              .build();  
-              
+              .build();
+
 
               int randomCount = (int) (Math.random() * 10);
               EventBatch eventBatch = null;
 
-              for (int counter = 0; counter < randomCount; counter++) {              
+              for (int counter = 0; counter < randomCount; counter++) {
                 CumulativeCounter localcCtr = CumulativeCounter.newBuilder().setCumulativeValue(counter)
                   .setDeltaValue(counter == 0 ? 0 : 1L)
                   .build();
@@ -98,8 +96,8 @@ public class ProducerExample {
                 .setGauge(guage)
                 .setCounter(null)
                 .setTimestampMs(Instant.now().plusSeconds(15*counter))
-                .build(); 
-                
+                .build();
+
                 eventBatch = EventBatch.newBuilder().setDataPoints( Arrays.asList(dpCtr,dpGuage)).build();
               }
                 eventBatch.getDataPoints().forEach( dp -> {
@@ -115,7 +113,7 @@ public class ProducerExample {
                   }
                 });
 
-                
+
                 Thread.sleep(1000L);
             }
 

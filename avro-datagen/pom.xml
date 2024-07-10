@@ -83,6 +83,12 @@ http://maven.apache.org/xsd/maven-4.0.0.xsd">
         <groupId>io.confluent</groupId>
         <artifactId>confluent-log4j</artifactId>
     </dependency>
+      <dependency>
+          <groupId>junit</groupId>
+          <artifactId>junit</artifactId>
+          <version>4.12</version>
+          <scope>test</scope>
+      </dependency>
   </dependencies>
 
   <build>
@@ -110,16 +116,19 @@ http://maven.apache.org/xsd/maven-4.0.0.xsd">
             <goal>schema</goal>
           </goals>
           <configuration>
-            <sourceDirectory>${project.basedir}/src/main/resources/avro/io/confluent/examples/clients/basicavro/</sourceDirectory>
-            <dateTimeLogicalTypeImplementation>JSR310</dateTimeLogicalTypeImplementation>
+            <sourceDirectory>${project.basedir}/src/main/resources/avro/io/confluent/examples/clients/basicavro</sourceDirectory>
+            <testSourceDirectory>${project.basedir}/src/main/resources/avro/io/confluent/examples/clients/basicavro</testSourceDirectory>
+
+              <dateTimeLogicalTypeImplementation>JSR310</dateTimeLogicalTypeImplementation>
             <stringType>String</stringType>
             <includes>
-              <include>new_relic.avsc</include>
-              <include>Payment.avsc</include>
-              <!-- <include>CumalativeCounter.avsc</include>
-              <include>Gauge.avsc</include>
-              <include>EventBatch.avsc</include>
-              <include>DataPoint.avsc</include> -->
+                <include>**/*.avsc</include>
+                <!-- <include>new_relic.avsc</include>
+                 <include>Payment.avsc</include>
+                  <include>CumalativeCounter.avsc</include>
+                 <include>Gauge.avsc</include>
+                 <include>EventBatch.avsc</include>
+                 <include>DataPoint.avsc</include> -->
 
             </includes>
             <outputDirectory>${project.build.directory}/generated-sources</outputDirectory>
