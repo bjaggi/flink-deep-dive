@@ -14,14 +14,14 @@ There is a lot of telemetry data to be processed in realtime. At high level they
 
 # Scope of the Use Case 1  <a name="poc1"></a>
 
-![use case 1](https://github.com/bjaggi/flink-deep-dive/blob/main/image/flink-poc.png)
+![use case 1](https://github.com/bjaggi/flink-deep-dive/blob/main/image/flink-poc.png)   
 
-. Create AVRO schema using AVRO IDL
-. Generate mock AVRO data on Kafka topics.
-. Create Flink Tables on Confluent Cloud
-. Ingest data from a Kafka topic to a Flink Table.
-. Write the SQL query to process data for the required analytics.
 
+. Create AVRO schema using AVRO IDL   
+. Generate mock AVRO data on Kafka topics.   
+. Create Flink Tables on Confluent Cloud   
+. Ingest data from a Kafka topic to a Flink Table.   
+. Write the SQL query to process data for the required analytics.   
 
 *Note: Customer's AVRO schema had `union` semantics, currently there is no support for `union` in Flink SQL, and we decided to create our own schema replacing union with nullable attributes. This step may not be required if the schema was in a state acceptable by Flink Sql.*
 
@@ -138,7 +138,7 @@ FROM (SELECT
 
 
 # Scope of the Use Case 2  <a name="poc2"></a>
-![use case 2](https://github.com/bjaggi/flink-deep-dive/blob/main/image/usecase_2.png)
+![use case 2](https://github.com/bjaggi/flink-deep-dive/blob/main/image/usecase_2.png)   
 
 . Migrating exising OSS FLink SQL to CC Flink SQL   
 .   
