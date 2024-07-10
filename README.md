@@ -6,14 +6,15 @@ A very popular SaaS company gathers telemetry data from websites and mobile apps
 There is a lot of telemetry data to be processed in realtime. At high level they analyze metrics of key data points in a 1 minute, 1 hour and 1 Day window.
 
 
-![use case 1](https://github.com/bjaggi/flink-deep-dive/blob/main/image/flink-poc.png)
-![use case 2](https://github.com/bjaggi/flink-deep-dive/blob/main/image/usecase_2.png)
+
 
 # Table of Contents
 1. [Scope of the Use Case 1](#poc1)
 1. [Scope of the Use Case 2](#poc2)
 
 # Scope of the Use Case 1  <a name="poc1"></a>
+
+![use case 1](https://github.com/bjaggi/flink-deep-dive/blob/main/image/flink-poc.png)
 
 . Create AVRO schema using AVRO IDL
 . Generate mock AVRO data on Kafka topics.
@@ -137,15 +138,11 @@ FROM (SELECT
 
 
 # Scope of the Use Case 2  <a name="poc2"></a>
+![use case 2](https://github.com/bjaggi/flink-deep-dive/blob/main/image/usecase_2.png)
 
 . Migrating exising OSS FLink SQL to CC Flink SQL   
 .   
 .   
-
-
-
-
-
 
 
 
