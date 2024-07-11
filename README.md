@@ -138,15 +138,41 @@ FROM (SELECT
 
 
 # Scope of the Use Case 2  <a name="poc2"></a>
+
+High level scope is migrating existing OSS FLink SQL to CC Flink SQL   ( details in the image)
 ![use case 2](https://github.com/bjaggi/flink-deep-dive/blob/main/image/usecase_2.png)   
 
-. Migrating exising OSS FLink SQL to CC Flink SQL   
-.   
-.   
+Steps taken :    
+1. Create Flink Tables ( details in the flink sql folder )   
+    <b>Note</b> : to delete a flink table : delete the kafka topic, its value schema and key schema 
+2. To write data to a Flink table do the following    
+   .   Take the schema from the kafka topic and compile them in the datagen utility here.   
+    <b>Note</b> : If you have keys in the Flink table, those attributes will be moved to the key schema. If you want to produce data for key and value. you have one of the following optioms.   
+    .  Create a table with these properties 
+   ```
+   CREATE TABLE t_joint (k INT, v STRING)
+   DISTRIBUTED BY (k)
+   WITH ('value.fields-include' = 'all');
+   ```
+   . Alter the producer schema ( merge key and value schema), and produce all data to a raw topic. As done in the usecase2. Data from ths raw topic can then be ingested to a Flink table.    
+3. 
+
 
 
 
 ### Query/ Monitor/ Troubleshoot
+. Monitor   ( Also avaible on CC UI) 
+https://api.telemetry.confluent.cloud/docs/descriptors/datasets/cloud   
+. Troubleshoot   
+If a flink query fails, you can check the logs. Also break the query into smaller chunks to analyze the sub/inner query.   
 
+
+
+# References 
+
+https://docs.confluent.io/cloud/current/flink/concepts/comparison-with-oss-flink.html
+https://docs.confluent.io/cloud/current/flink/reference/statements/create-table.html#distributed-by-clause
+https://confluentinc.atlassian.net/wiki/spaces/CPFundamentals/pages/3416785013/Flink+Setup+Hands+on
+https://confluentinc.atlassian.net/wiki/spaces/~63bc5d3249a31f95b8733e8b/pages/3338865133/Flink+SQL+Examples+on+Confluent+Cloud to public docs
 
 
