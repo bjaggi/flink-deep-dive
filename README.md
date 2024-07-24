@@ -168,9 +168,12 @@ If a flink query fails, you can check the logs. Also break the query into smalle
 
 
 
-# References 
-https://medium.com/confluent/flink-sql-in-practice-create-your-first-table-in-confluent-cloud-20cb0cbbfa38   
+# References
 https://docs.confluent.io/cloud/current/flink/concepts/comparison-with-oss-flink.html   
+
+https://medium.com/confluent/flink-sql-in-practice-create-your-first-table-in-confluent-cloud-20cb0cbbfa38
+https://confluentinc.atlassian.net/wiki/spaces/~63bc5d3249a31f95b8733e8b/pages/3338865133/Flink+SQL+Examples+on+Confluent+Cloud
+
 https://docs.confluent.io/cloud/current/flink/reference/statements/create-table.html#distributed-by-clause      
 https://confluentinc.atlassian.net/wiki/spaces/CPFundamentals/pages/3416785013/Flink+Setup+Hands+on   
 https://confluentinc.atlassian.net/wiki/spaces/~63bc5d3249a31f95b8733e8b/pages/3338865133/Flink+SQL+Examples+on+Confluent+Cloud    
