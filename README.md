@@ -94,6 +94,22 @@ SELECT
 
 ### Custom WaterMark using Flink
 
+Example 1 :    
+~~~sql
+CREATE TABLE Orders (
+    user BIGINT,
+    product STRING,
+    order_time TIMESTAMP(3),
+    WATERMARK FOR order_time AS order_time - INTERVAL '5' SECOND
+) WITH ( . . . );
+~~~
+
+Reference : https://nightlies.apache.org/flink/flink-docs-release-1.10/dev/table/sql/create.html#create-table   
+
+
+
+
+Example 2 :   
 ~~~sql
 FROM TABLE(TUMBLE(TABLE `newr_metrics_watermarked_tbl` , DESCRIPTOR(timestampMs), INTERVAL '1' MINUTES))
 ~~~
